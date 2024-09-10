@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stats - FUPRE Sports Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .stats-team {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .stats-bar {
+            display: flex;
+            height: 0.5rem;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        .stats-bar-a {
+            background-color: black;
+        }
+        .stats-bar-b {
+            background-color: #e5e5e5;
+        }
+        .stats-label {
+            display: flex;
+            justify-content: space-between;
+        }
+        .lineups {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .lineup {
+            width: 45%;
+        }
+        .button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.875rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        @media (max-width: 768px) {
+            .stats-container, .lineups {
+                flex-direction: column;
+            }
+            .stats-team, .lineup {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Full Match Statistics</h1>
+        <div id="matchInfo"></div>
+        <div id="statsContent"></div>
+        <div id="backButton" style="text-align: center; margin-top: 2rem;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const matchType = urlParams.get('match');
+            const teams = urlParams.get('teams').split('-');
+
+            const matchInfo = document.getElementById('matchInfo');
+            const statsContent = document.getElementById('statsContent');
+            const backButton = document.getElementById('backButton');
+
+            matchInfo.innerHTML = `<h2>${teams[0]} vs ${teams[1]}</h2>`;
+
+            if (matchType === 'upcoming') {
+                statsContent.innerHTML = `
+                    <h3>Pre-match Stats</h3>
+                    <div class="stats-container">
+                        <div class="stats-team">
+                            <div class="stats-label">
+                                <span>${teams[0]}</span>
+                                <span>Recent Form</span>
+                                <span>${teams[1]}</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 60%;"></div>
+                                <div class="stats-bar-b" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lineups">
+                        <div class="lineup">
+                            <h3>${teams[0]} Lineup</h3>
+                            <ol>
+                                <li>Player 1</li>
+                                <li>Player 2</li>
+                                <li>Player 3</li>
+                                <li>Player 4</li>
+                                <li>Player 5</li>
+                            </ol>
+                            <p>Coach: Coach Name</p>
+                        </div>
+                        <div class="lineup">
+                            <h3>${teams[1]} Lineup</h3>
+                            <ol>
+                                <li>Player 1</li>
+                                <li>Player 2</li>
+                                <li>Player 3</li>
+                                <li>Player 4</li>
+                                <li>Player 5</li>
+                            </ol>
+                            <p>Coach: Coach Name</p>
+                        </div>
+                    </div>
+                `;
+            } else if (matchType === 'completed' || matchType === 'live') {
+                statsContent.innerHTML = `
+                    <h3>Match Stats</h3>
+                    <div class="stats-container">
+                        <div class="stats-team">
+                            <div class="stats-label">
+                                <span>${teams[0]}</span>
+                                <span>Possession</span>
+                                <span>${teams[1]}</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 55%;"></div>
+                                <div class="stats-bar-b" style="width: 45%;"></div>
+                            </div>
+                            <div class="stats-label">
+                                <span>12</span>
+                                <span>Shots</span>
+                                <span>10</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 60%;"></div>
+                                <div class="stats-bar-b" style="width: 40%;"></div>
+                            </div>
+                            <div class="stats-label">
+                                <span>6</span>
+                                <span>Corners</span>
+                                <span>4</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 70%;"></div>
+                                <div class="stats-bar-b" style="width: 30%;"></div>
+                            </div>
+                            <div class="stats-label">
+                                <span>8</span>
+                                <span>Fouls</span>
+                                <span>10</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 40%;"></div>
+                                <div class="stats-bar-b" style="width: 60%;"></div>
+                            </div>
+                            <div class="stats-label">
+                                <span>3</span>
+                                <span>Yellow Cards</span>
+                                <span>2</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 60%;"></div>
+                                <div class="stats-bar-b" style="width: 40%;"></div>
+                            </div>
+                            <div class="stats-label">
+                                <span>0</span>
+                                <span>Red Cards</span>
+                                <span>1</span>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stats-bar-a" style="width: 0%;"></div>
+                                <div class="stats-bar-b" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lineups">
+                        <div class="lineup">
+                            <h3>${teams[0]} Lineup</h3>
+                            <ol>
+                                <li>Player 1 (GK)</li>
+                                <li>Player 2</li>
+                                <li>Player 3</li>
+                                <li>Player 4</li>
+                                <li>Player 5</li>
+                                <li>Player 6</li>
+                                <li>Player 7</li>
+                                <li>Player 8</li>
+                                <li>Player 9</li>
+                                <li>Player 10</li>
+                                <li>Player 11</li>
+                            </ol>
+                            <h4>Substitutes</h4>
+                            <ul>
+                                <li>Sub 1</li>
+                                <li>Sub 2</li>
+                                <li>Sub 3</li>
+                            </ul>
+                            <p>Coach: Coach Name</p>
+                        </div>
+                        <div class="lineup">
+                            <h3>${teams[1]} Lineup</h3>
+                            <ol>
+                                <li>Player 1 (GK)</li>
+                                <li>Player 2</li>
+                                <li>Player 3</li>
+                                <li>Player 4</li>
+                                <li>Player 5</li>
+                                <li>Player 6</li>
+                                <li>Player 7</li>
+                                <li>Player 8</li>
+                                <li>Player 9</li>
+                                <li>Player 10</li>
+                                <li>Player 11</li>
+                            </ol>
+                            <h4>Substitutes</h4>
+                            <ul>
+                                <li>Sub 1</li>
+                                <li>Sub 2</li>
+                                <li>Sub 3</li>
+                            </ul>
+                            <p>Coach: Coach Name</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            backButton.innerHTML = `<button class="button" onclick="goBack()">Back to Previous Page</button>`;
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

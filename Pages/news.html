@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article - FUPRE Sports Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .article-content {
+            margin-bottom: 2rem;
+        }
+        .button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.875rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="articleTitle">Article Title</h1>
+        <div class="article-meta">
+            <span id="articleDate">Date: </span>
+            <span id="articleAuthor">Author: </span>
+        </div>
+        <div id="articleContent" class="article-content">
+            <!-- Article content will be inserted here -->
+        </div>
+        <a href="index.html" class="button">Back to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('article');
+
+            const articles = {
+                'tigers-championship': {
+                    title: 'FUPRE Tigers Clinch Championship Title',
+                    date: '2023-06-15',
+                    author: 'John Smith',
+                    content: `
+                        <p>In a thrilling final match, the FUPRE Tigers secured their first-ever championship title, marking a historic moment for the university's sports program. The game, which took place at the National Stadium, saw the Tigers face off against their long-time rivals, the City Falcons.</p>
+                        <p>From the opening whistle, it was clear that both teams were determined to claim victory. The Tigers, led by team captain Sarah Johnson, displayed exceptional skill and teamwork throughout the match. The first half ended in a tense 1-1 draw, with both sides having missed several opportunities to take the lead.</p>
+                        <p>The second half began with renewed energy from the Tigers. In the 63rd minute, star striker Michael Okonkwo scored a spectacular goal from outside the penalty box, sending the crowd into a frenzy. The Falcons fought back hard, but the Tigers' defense, anchored by goalkeeper David Adeyemi, held strong.</p>
+                        <p>As the final whistle blew, the scoreboard read 2-1 in favor of the FUPRE Tigers. The stadium erupted in cheers as players and fans alike celebrated this momentous victory. Coach Amina Bello, visibly moved, praised her team's dedication and hard work throughout the season.</p>
+                        <p>This championship win is not just a triumph for the team, but for the entire FUPRE community. It serves as a testament to the university's commitment to fostering both academic and athletic excellence. The Tigers' victory will undoubtedly inspire future generations of FUPRE students to pursue their dreams both on and off the field.</p>
+                    `
+                },
+                'sports-complex': {
+                    title: 'New Sports Complex Announced for FUPRE',
+                    date: '2023-06-14',
+                    author: 'Emily Johnson',
+                    content: `
+                        <p>The university administration has unveiled plans for a state-of-the-art sports complex, set to revolutionize athletic facilities at FUPRE. This ambitious project, with an estimated cost of ₦5 billion, is scheduled to break ground next month and is expected to be completed within two years.</p>
+                        <p>The new complex will feature:</p>
+                        <ul>
+                            <li>An Olympic-sized swimming pool</li>
+                            <li>A multi-purpose indoor arena capable of seating 5,000 spectators</li>
+                            <li>A modern fitness center equipped with the latest exercise machines</li>
+                            <li>Multiple outdoor fields for football, cricket, and track and field events</li>
+                            <li>Dedicated spaces for martial arts, gymnastics, and other specialized sports</li>
+                        </ul>
+                        <p>Vice-Chancellor, Prof. Akpofure Rim-Rukeh, expressed his excitement about the project: "This sports complex will not only provide our students with world-class facilities but also position FUPRE as a leading institution for sports development in Nigeria."</p>
+                        <p>The complex is designed to be environmentally friendly, incorporating solar panels for energy and a rainwater harvesting system. It will also include classrooms and research facilities, bridging the gap between sports practice and sports science.</p>
+                        <p>Student body president, Chidi Okafor, welcomed the news: "This is a game-changer for our university. It will enhance our sports programs and provide a space for all students to engage in physical activities, promoting a healthier campus lifestyle."</p>
+                        <p>The announcement has been met with enthusiasm from both the university community and local sports organizations. It is expected to boost FUPRE's appeal to prospective students and potentially serve as a training ground for national and international sporting events.</p>
+                    `
+                },
+                'national-record': {
+                    title: 'FUPRE Athlete Breaks National Record',
+                    date: '2023-06-13',
+                    author: 'Michael Adekunle',
+                    content: `
+                        <p>FUPRE's star athlete, Jane Doe, has broken the national record in the 100m sprint, clocking an impressive time of 10.85 seconds at the Inter-University Athletics Championship held yesterday. This remarkable achievement not only secures Jane's place in Nigerian sports history but also brings immense pride to the FUPRE community.</p>
+                        <p>Jane, a third-year student of Mechanical Engineering, has been a standout performer in FUPRE's athletics team since her freshman year. Her journey to this record-breaking moment has been one of dedication, perseverance, and relentless training.</p>
+                        <p>"I still can't believe it," Jane said in a post-race interview. "I've been working towards this goal for years, and to finally achieve it feels surreal. I'm grateful for the support from my coaches, teammates, and the entire FUPRE family."</p>
+                        <p>Jane's coach, former Olympian Samuel Okon, praised her performance: "Jane has always shown exceptional potential. Her discipline and work ethic are unmatched. This record is a testament to her abilities and the quality of our athletics program at FUPRE."</p>
+                        <p>The previous national record of 10.91 seconds had stood for over a decade. Jane's achievement has caught the attention of the Nigerian Athletics Federation, with talks of her potentially representing the country in upcoming international competitions.</p>
+                        <p>FUPRE's Director of Sports, Dr. Funmilayo Adebayo, sees this as a pivotal moment for the university's athletics program. "Jane's success will inspire other students to pursue excellence in sports alongside their academic endeavors. We are committed to nurturing such talents and providing them with the resources they need to succeed."</p>
+                        <p>As news of Jane's record-breaking run spreads, there's a palpable sense of excitement on campus. Students and faculty alike are celebrating this historic achievement, with plans for a grand reception in the works.</p>
+                        <p>Jane's next goal? "I'm setting my sights on the African record now," she says with a determined smile. "And who knows, maybe the Olympics are in my future too."</p>
+                        <p>With her talent, determination, and the support of FUPRE behind her, it seems the sky's the limit for Jane Doe.</p>
+                    `
+                }
+            };
+
+            const article = articles[articleId];
+            if (article) {
+                document.getElementById('articleTitle').textContent = article.title;
+                document.getElementById('articleDate').textContent = `Date: ${article.date}`;
+                document.getElementById('articleAuthor').textContent = `Author: ${article.author}`;
+                document.getElementById('articleContent').innerHTML = article.content;
+            } else {
+                document.getElementById('articleTitle').textContent = 'Article Not Found';
+                document.getElementById('articleContent').innerHTML = '<p>Sorry, the requested article could not be found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
